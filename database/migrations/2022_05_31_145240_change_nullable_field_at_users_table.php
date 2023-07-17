@@ -22,7 +22,6 @@ class ChangeNullableFieldAtUsersTable extends Migration
             $table->string('country')->nullable()->change();
             $table->string('phone_number')->nullable()->change();
             $table->string('store_name')->nullable()->change();
-            $table->integer('categories_id')->nullable()->change();
             $table->integer('store_status')->nullable()->change();
         });
     }

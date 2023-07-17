@@ -202,9 +202,9 @@
         },
         data() {
 					return {
-						name: "Ramiza Al Farishi",
-						email: "user@admin.com",
-						is_store_open: true,
+						name: "Al Farishi",
+						email: "user@gmail.com",
+						is_store_open: false,
 						store_name: "",
 						email_unavailable: false
 					}

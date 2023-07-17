@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
-use App\Cart;
-use App\Transaction;
-use App\TransactionDetail;
-
 use Exception;
+
+use App\Models\Cart;
 
 use Midtrans\Snap;
 use Midtrans\Config;
 use Midtrans\Notification;
+
+use App\Models\Transaction;
+use Illuminate\Http\Request;
+use App\Models\TransactionDetail;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -56,10 +56,10 @@ class CheckoutController extends Controller
         Cart::where('users_id', Auth::user()->id)->delete();
 
         // midtrans config
-        Config::$serverKey = config('services.midtrans.serverKey');
-        Config::$isProduction = config('services.midtrans.isProduction');
-        Config::$isSanitized = config('services.midtrans.isSanitized');
-        Config::$is3ds = config('services.midtrans.is3ds');
+        Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        Config::$isProduction = env('MIDTRANS_IS_PRODUCTION');
+        Config::$isSanitized = env('MIDTRANS_IS_SANITIZED');
+        Config::$is3ds = env('MIDTRANS_IS_3DS');
 
         // create array to send to midtrans
         $midtrans = [
@@ -74,6 +74,7 @@ class CheckoutController extends Controller
             "enabled_payments" => [
                 "gopay",
                 "bank_transfer",
+                "credit_card"
             ],
             "vtweb" => []
         ];
@@ -93,10 +94,10 @@ class CheckoutController extends Controller
     public function callback(Request $request)
     {
         // set midtrans config
-        Config::$serverKey = config('services.midtrans.serverKey');
-        Config::$isProduction = config('services.midtrans.isProduction');
-        Config::$isSanitized = config('services.midtrans.isSanitized');
-        Config::$is3ds = config('services.midtrans.is3ds');
+        Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        Config::$isProduction = env('MIDTRANS_IS_PRODUCTION');
+        Config::$isSanitized = env('MIDTRANS_IS_SANITIZED');
+        Config::$is3ds = env('MIDTRANS_IS_3DS');
 
         // instace midtrans notification
         $notification = new Notification();

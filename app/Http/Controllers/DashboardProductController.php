@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Category;
-use App\ProductGallery;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\ProductGallery;
 
 use Illuminate\Http\Request;
 

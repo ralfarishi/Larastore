@@ -28,10 +28,8 @@ class CreateUsersTable extends Migration
             $table->string('country');
             $table->string('phone_number');
             $table->string('store_name');
-            $table->integer('categories_id');
             $table->integer('store_status');
 
-            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -24,7 +24,7 @@ class ProductGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'photos' => 'required|image',
+            'photos' => 'required|mimes:png,jpg,jpeg,webp|max:500',
             'products_id' => 'required|exists:products,id'
         ];
     }

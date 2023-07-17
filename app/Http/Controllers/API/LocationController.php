@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use App\Models\Province;
 use App\Models\Regency;
+use App\Models\Province;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LocationController extends Controller
 {
